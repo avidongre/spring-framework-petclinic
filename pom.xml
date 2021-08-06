@@ -465,10 +465,21 @@
 
     <profiles>
         <profile>
-            <id>H2</id>
+            <id>PGWithoutEnv</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                    <version>${postgresql-driver.version}</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>H2</id>
             <properties>
                 <db.script>h2</db.script>
                 <jpa.database>H2</jpa.database>
