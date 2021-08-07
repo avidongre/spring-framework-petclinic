@@ -5,7 +5,8 @@ CREATE TABLE IF NOT EXISTS vets (
   CONSTRAINT pk_vets PRIMARY KEY (id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_vets_last_name ON vets (last_name);
+DROP INDEX IF EXISTS idx_vets_last_name;
+CREATE INDEX idx_vets_last_name ON vets (last_name);
 
 ALTER SEQUENCE vets_id_seq RESTART WITH 100;
 
@@ -16,7 +17,8 @@ CREATE TABLE IF NOT EXISTS specialties (
   CONSTRAINT pk_specialties PRIMARY KEY (id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_specialties_name ON specialties (name);
+DROP INDEX IF EXISTS idx_specialties_name;
+CREATE INDEX idx_specialties_name ON specialties (name);
 
 ALTER SEQUENCE specialties_id_seq RESTART WITH 100;
 
@@ -37,7 +39,8 @@ CREATE TABLE IF NOT EXISTS types (
   CONSTRAINT pk_types PRIMARY KEY (id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_types_name ON types (name);
+DROP INDEX IF EXISTS idx_types_name;
+CREATE INDEX idx_types_name ON types (name);
 
 ALTER SEQUENCE types_id_seq RESTART WITH 100;
 
@@ -51,7 +54,8 @@ CREATE TABLE IF NOT EXISTS owners (
   CONSTRAINT pk_owners PRIMARY KEY (id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_owners_last_name ON owners (last_name);
+DROP INDEX IF EXISTS idx_owners_last_name;
+CREATE INDEX idx_owners_last_name ON owners (last_name);
 
 ALTER SEQUENCE owners_id_seq RESTART WITH 100;
 
@@ -67,7 +71,8 @@ CREATE TABLE IF NOT EXISTS pets (
   CONSTRAINT pk_pets PRIMARY KEY (id)
 );
 
-CREATE INDEX IF NOT EXISTS idx_pets_name ON pets (name);
+DROP INDEX IF EXISTS idx_pets_name;
+CREATE INDEX idx_pets_name ON pets (name);
 
 ALTER SEQUENCE pets_id_seq RESTART WITH 100;
 
