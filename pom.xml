@@ -33,7 +33,7 @@
         <wro4j.version>1.8.0</wro4j.version> <!-- wro4j 1.0.0 requires Java 9 -->
 
         <!-- Java EE / Java SE dependencies -->
-        <tomcat.version>9.0.46</tomcat.version>
+        <tomcat.version>8.5.69</tomcat.version>
         <jaxb-api.version>2.3.1</jaxb-api.version>
         <jaxb-runtime.version>2.3.4</jaxb-runtime.version>
         <javax-activation.version>1.2.0</javax-activation.version>
@@ -61,6 +61,12 @@
         <!-- JDBC Drivers -->
         <mysql-driver.version>8.0.19</mysql-driver.version>
         <postgresql-driver.version>9.4.1211.jre7</postgresql-driver.version>
+        <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
+        <jdbc.url>jdbc:postgresql://VDTDATRBP05:5432/petclinic2</jdbc.url>
+        <jdbc.username>postgres</jdbc.username>
+        <jdbc.password>postgres</jdbc.password>
+
+        <!-- JDBC Config -->
 
         <!-- Others -->
         <jackson.version>2.12.1</jackson.version>
@@ -465,21 +471,10 @@
 
     <profiles>
         <profile>
-            <id>PGWithoutEnv</id>
+            <id>H2</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-            <dependencies>
-                <dependency>
-                    <groupId>org.postgresql</groupId>
-                    <artifactId>postgresql</artifactId>
-                    <version>${postgresql-driver.version}</version>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>H2</id>
             <properties>
                 <db.script>h2</db.script>
                 <jpa.database>H2</jpa.database>
@@ -538,12 +533,12 @@
         <profile>
             <id>PostgreSQL</id>
             <properties>
-                <db.script>postgresql</db.script>
-                <jpa.database>POSTGRESQL</jpa.database>
-                <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-                <jdbc.url>jdbc:postgresql://localhost:5432/petclinic</jdbc.url>
-                <jdbc.username>postgres</jdbc.username>
-                <jdbc.password>petclinic</jdbc.password>
+                <db.script>${my.db.script}</db.script>
+                <jpa.database>${my.jpa.database}</jpa.database>
+                <jdbc.driverClassName>${my.jdbc.driver}</jdbc.driverClassName>
+                <jdbc.url>${my.jdbc.url}</jdbc.url>
+                <jdbc.username>${my.jdbc.username}</jdbc.username>
+                <jdbc.password>${my.jdbc.password}</jdbc.password>
             </properties>
             <dependencies>
                 <dependency>
