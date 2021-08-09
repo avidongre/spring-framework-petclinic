@@ -344,6 +344,31 @@
             </plugin>
 
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                <execution>
+                    <id>1-StepOnePostPackage</id>
+                    <phase>pre-integration-test</phase>
+                    <goals>
+                        <goal>exec</goal>
+                    </goals>
+                </execution>
+                </executions>
+                <configuration>
+                    <executable>java</executable>
+                    <workingDirectory>${project.basedir}/jakartaee-migration</workingDirectory>
+                    <arguments>
+                        <argument>-jar</argument>
+                        <argument>${project.basedir}/jakartaee-migration/jakartaee-migration-1.0.0-shaded.jar</argument>
+                        <argument>${project.build.directory}/petclinic.war</argument>
+                        <argument>${project.build.directory}/petclinic-jakarta.war</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-eclipse-plugin</artifactId>
                 <version>${maven-eclipse-plugin.version}</version>
@@ -452,21 +477,36 @@
             </plugin>
 
             <plugin>
-                <groupId>com.google.cloud.tools</groupId>
-                <artifactId>jib-maven-plugin</artifactId>
-                <version>${docker.jib-maven-plugin.version}</version>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.36.1</version>
                 <configuration>
-                    <to>
-                        <image>docker.io/${docker.image.prefix}/${project.artifactId}</image>
-                        <tags>
-                            <tag>${project.version}</tag>
-                            <tag>latest</tag>
-                        </tags>
-                    </to>
+                <images>
+                    <image>
+                        <name>petclinic</name>
+                        <build>
+                            <tags>
+                                <tag>latest</tag>
+                            </tags>
+                            <dockerFileDir>${basedir}</dockerFileDir>
+                            <filter>@</filter>
+                        </build>
+                    </image>
+                </images>
                 </configuration>
+                <executions>
+                    <execution>
+                    <id>3-BuildDockerImage</id>
+                    <phase>pre-integration-test</phase>
+                    <goals>
+                        <goal>build</goal>
+                        <goal>tag</goal>
+                    </goals>
+                    </execution>
+                </executions>                
             </plugin>
-
         </plugins>
+
     </build>
 
     <profiles>
