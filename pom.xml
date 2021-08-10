@@ -481,6 +481,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.36.1</version>
                 <configuration>
+                <registry>infykubedemo.azurecr.io</registry>
                 <images>
                     <image>
                         <name>petclinic</name>
