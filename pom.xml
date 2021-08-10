@@ -573,14 +573,14 @@
         </profile>
         <profile>
             <id>PostgreSQL</id>
-            <properties>
+            <!-- <properties>
                 <db.script>${my.db.script}</db.script>
                 <jpa.database>${my.jpa.database}</jpa.database>
                 <jdbc.driverClassName>${my.jdbc.driver}</jdbc.driverClassName>
                 <jdbc.url>${my.jdbc.url}</jdbc.url>
                 <jdbc.username>${my.jdbc.username}</jdbc.username>
                 <jdbc.password>${my.jdbc.password}</jdbc.password>
-            </properties>
+            </properties> -->
             <dependencies>
                 <dependency>
                     <groupId>org.postgresql</groupId>
