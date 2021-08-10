@@ -294,7 +294,12 @@
             <artifactId>javax.activation-api</artifactId>
             <version>${javax-activation.version}</version>
         </dependency>
-
+		<dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>${h2database.version}</version>
+                    <scope>test</scope>
+                </dependency>
     </dependencies>
 
     <!-- Maven plugin versions are mentioned in order to guarantee the build reproducibility in the long term -->
@@ -513,9 +518,9 @@
     <profiles>
         <profile>
             <id>H2</id>
-            <activation>
+           <!--<activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>
+            </activation> -->
             <properties>
                 <db.script>h2</db.script>
                 <jpa.database>H2</jpa.database>
