@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-petclinic
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-petclinic
+  template:
+    metadata:
+      labels:
+        app: spring-petclinic
+    spec:
+      containers:
+      - name: spring-petclinic
+        image: infykubedemo.azurecr.io/petclinic:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: db.script
+          value: postgresql
+        - name: my.jpa.database
+          value: POSTGRESQL
+        - name: my.jdbc.driverClassName
+          value: org.postgresql.Driver
+        - name: my.jdbc.url
+          valueFrom: 
+            secretKeyRef:
+               name: petclinic-db-creds
+               key: my.jdbc.url
+        - name: my.jdbc.username
+          valueFrom: 
+            secretKeyRef:
+               name: petclinic-db-creds
+               key: my.jdbc.username
+        - name: my.jdbc.password
+          valueFrom: 
+            secretKeyRef:
+               name: petclinic-db-creds
+               key: my.jdbc.password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-petclinic
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+    targetPort: 8080
+    protocol: TCP
+    name: http
+  selector:
+    app: spring-petclinic

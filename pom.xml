@@ -61,10 +61,6 @@
         <!-- JDBC Drivers -->
         <mysql-driver.version>8.0.19</mysql-driver.version>
         <postgresql-driver.version>9.4.1211.jre7</postgresql-driver.version>
-        <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-        <jdbc.url>jdbc:postgresql://VDTDATRBP05:5432/petclinic2</jdbc.url>
-        <jdbc.username>postgres</jdbc.username>
-        <jdbc.password>postgres</jdbc.password>
 
         <!-- JDBC Config -->
 
@@ -294,7 +290,12 @@
             <artifactId>javax.activation-api</artifactId>
             <version>${javax-activation.version}</version>
         </dependency>
-
+		<dependency>
+                    <groupId>com.h2database</groupId>
+                    <artifactId>h2</artifactId>
+                    <version>${h2database.version}</version>
+                    <scope>test</scope>
+                </dependency>
     </dependencies>
 
     <!-- Maven plugin versions are mentioned in order to guarantee the build reproducibility in the long term -->
@@ -481,6 +482,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.36.1</version>
                 <configuration>
+                <registry>infykubedemo.azurecr.io</registry>
                 <images>
                     <image>
                         <name>petclinic</name>
@@ -512,9 +514,9 @@
     <profiles>
         <profile>
             <id>H2</id>
-            <activation>
+           <!--<activation>
                 <activeByDefault>true</activeByDefault>
-            </activation>
+            </activation> -->
             <properties>
                 <db.script>h2</db.script>
                 <jpa.database>H2</jpa.database>
@@ -572,14 +574,14 @@
         </profile>
         <profile>
             <id>PostgreSQL</id>
-            <properties>
+            <!-- <properties>
                 <db.script>${my.db.script}</db.script>
                 <jpa.database>${my.jpa.database}</jpa.database>
                 <jdbc.driverClassName>${my.jdbc.driver}</jdbc.driverClassName>
                 <jdbc.url>${my.jdbc.url}</jdbc.url>
                 <jdbc.username>${my.jdbc.username}</jdbc.username>
                 <jdbc.password>${my.jdbc.password}</jdbc.password>
-            </properties>
+            </properties> -->
             <dependencies>
                 <dependency>
                     <groupId>org.postgresql</groupId>
