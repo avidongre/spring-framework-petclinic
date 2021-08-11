@@ -61,10 +61,6 @@
         <!-- JDBC Drivers -->
         <mysql-driver.version>8.0.19</mysql-driver.version>
         <postgresql-driver.version>9.4.1211.jre7</postgresql-driver.version>
-        <jdbc.driverClassName>org.postgresql.Driver</jdbc.driverClassName>
-        <jdbc.url>jdbc:postgresql://VDTDATRBP05:5432/petclinic2</jdbc.url>
-        <jdbc.username>postgres</jdbc.username>
-        <jdbc.password>postgres</jdbc.password>
 
         <!-- JDBC Config -->
 
