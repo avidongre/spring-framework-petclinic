@@ -35,8 +35,8 @@ steps:
   displayName: Trivy Scanning
   inputs:
     script: 
-      #trivy image --exit-code 0 --severity LOW,MEDIUM $(registryName)/$(imageName):$(tag)
-      #trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(imageName):$(tag)
+      trivy image --exit-code 0 --severity LOW,MEDIUM $(registryName)/$(imageName):$(tag)
+      trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(imageName):$(tag)
 - task: PublishBuildArtifacts@1
   displayName: Bublish Build Artifacts 
 
