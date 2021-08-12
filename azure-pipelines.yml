@@ -27,7 +27,7 @@ steps:
     containerRegistry: 'infykubedemoregistry'
     repository: 'spring-framework-petclinic-app'
     command: 'build'
-    Dockerfile: '*/Dockerfile'
+    Dockerfile: 'Dockerfile'
 - task: CmdLine@2
   displayName: Trivy Scanning
   inputs:
