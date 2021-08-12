@@ -6,8 +6,8 @@
 trigger:
 - master
 
-agent:
-  pool: MyHostedVm
+pool:
+  name: MyHostedVM
 
 steps:
 - task: Maven@3
