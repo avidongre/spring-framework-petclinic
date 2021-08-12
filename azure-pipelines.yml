@@ -46,6 +46,17 @@ steps:
     repository: '$(repository)'
     command: 'push'
 
+
+- task: HelmDeploy@0
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceConnection: 'KubeMigrate-bk-test'
+    namespace: 'bk-test'
+    command: 'install'
+    chartType: 'FilePath'
+    chartPath: 'spring-framework-petclinic-helm/Chart.yaml'
+    releaseName: 'spring-framework-petclinic'
+    valueFile: 'spring-framework-petclinic-helm/Values.yaml'
 - task: HelmDeploy@0
   inputs:
     connectionType: 'Kubernetes Service Connection'
