@@ -7,7 +7,7 @@ trigger:
 - aks-migrate
 
 pool:
-  agent: MyHostedVM
+  name: MyHostedVM
 
 steps:
 - task: Maven@3
