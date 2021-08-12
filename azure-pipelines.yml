@@ -38,6 +38,7 @@ steps:
     script: 
       echo 'variable'
       echo  $(repository)
+      trivy --version
       trivy image --exit-code 0 --severity LOW,MEDIUM $(registryName)/$(repository):$(Build.BuildId)
       trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(repository):$(Build.BuildId)
 - task: PublishBuildArtifacts@1
