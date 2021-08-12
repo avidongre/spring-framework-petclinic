@@ -39,11 +39,19 @@ steps:
       trivy image --exit-code 0 --severity LOW,MEDIUM $(registryName)/$(repository):$(Build.BuildId)
       #trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(repository):$(Build.BuildId)
 - task: Docker@2
+  enabled: false
   displayName: Docker push
   inputs:
     containerRegistry: 'infykubedemoregistry'
     repository: '$(repository)'
     command: 'push'
+
+- task: HelmDeploy@0
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceConnection: 'KubeMigrate-bk-test'
+    namespace: 'test-bk'
+    command: 'ls'
 
      
 
