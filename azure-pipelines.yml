@@ -50,7 +50,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceConnection: 'KubeMigrate-bk-test'
-    namespace: 'test-bk'
+    namespace: 'bk-test'
     command: 'ls'
 
      
