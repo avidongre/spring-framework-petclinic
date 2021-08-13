@@ -39,7 +39,7 @@ steps:
       trivy image --exit-code 0 --severity LOW,MEDIUM $(registryName)/$(repository):$(Build.BuildId)
       #trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(repository):$(Build.BuildId)
 - task: Docker@2
-  enabled: false
+  enabled: true
   displayName: Docker push
   inputs:
     containerRegistry: 'infykubedemoregistry'
@@ -48,6 +48,7 @@ steps:
 
 
 - task: HelmDeploy@0
+  displayName: Helm Install
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceConnection: 'KubeMigrate-bk-test'
@@ -58,6 +59,7 @@ steps:
     releaseName: 'spring-framework-petclinic'
     valueFile: 'spring-framework-petclinic-helm/values.yaml'
 - task: HelmDeploy@0
+  displayName: Helm list
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceConnection: 'KubeMigrate-bk-test'
