@@ -56,7 +56,7 @@ steps:
     chartType: 'FilePath'
     chartPath: 'spring-framework-petclinic-helm/Chart.yaml'
     releaseName: 'spring-framework-petclinic'
-    valueFile: 'spring-framework-petclinic-helm/Values.yaml'
+    valueFile: 'spring-framework-petclinic-helm/values.yaml'
 - task: HelmDeploy@0
   inputs:
     connectionType: 'Kubernetes Service Connection'
