@@ -49,11 +49,22 @@ steps:
 
 - task: HelmDeploy@0
   displayName: Helm Install
+  enabled: false
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceConnection: 'KubeMigrate-bk-test'
     namespace: 'bk-test'
     command: 'install'
+    chartType: 'FilePath'
+    chartPath: 'spring-framework-petclinic-helm'
+    releaseName: 'spring-framework-petclinic'
+    valueFile: 'spring-framework-petclinic-helm/values.yaml'
+- task: HelmDeploy@0
+  inputs:
+    connectionType: 'Kubernetes Service Connection'
+    kubernetesServiceConnection: 'KubeMigrate-bk-test'
+    namespace: 'bk-test'
+    command: 'upgrade'
     chartType: 'FilePath'
     chartPath: 'spring-framework-petclinic-helm'
     releaseName: 'spring-framework-petclinic'
