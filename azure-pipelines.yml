@@ -54,7 +54,7 @@ steps:
     namespace: 'bk-test'
     command: 'install'
     chartType: 'FilePath'
-    chartPath: 'spring-framework-petclinic-helm/Chart.yaml'
+    chartPath: 'spring-framework-petclinic-helm'
     releaseName: 'spring-framework-petclinic'
     valueFile: 'spring-framework-petclinic-helm/values.yaml'
 - task: HelmDeploy@0
