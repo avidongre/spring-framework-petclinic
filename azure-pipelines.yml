@@ -52,7 +52,7 @@ steps:
   enabled: false
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceConnection: 'KubeMigrate-bk-test'
+    kubernetesServiceConnection: 'petclinick8connection'
     namespace: 'petclinic'
     command: 'install'
     chartType: 'FilePath'
@@ -62,7 +62,7 @@ steps:
 - task: HelmDeploy@0
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceConnection: 'KubeMigrate-bk-test'
+    kubernetesServiceConnection: 'petclinick8connection'
     namespace: 'petclinic'
     command: 'upgrade'
     chartType: 'FilePath'
@@ -73,7 +73,7 @@ steps:
   displayName: Helm list
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceConnection: 'KubeMigrate-bk-test'
+    kubernetesServiceConnection: 'petclinick8connection'
     namespace: 'petclinic'
     command: 'ls'
 - task: PublishBuildArtifacts@1
