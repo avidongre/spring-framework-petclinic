@@ -76,6 +76,11 @@ steps:
     kubernetesServiceConnection: 'KubeMigrate-bk-test'
     namespace: 'petclinic'
     command: 'ls'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'helmcharts'
+    publishLocation: 'Container'
 
      
 
