@@ -53,7 +53,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceConnection: 'KubeMigrate-bk-test'
-    namespace: 'bk-test'
+    namespace: 'petclinic'
     command: 'install'
     chartType: 'FilePath'
     chartPath: 'spring-framework-petclinic-helm'
@@ -63,7 +63,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceConnection: 'KubeMigrate-bk-test'
-    namespace: 'bk-test'
+    namespace: 'petclinic'
     command: 'upgrade'
     chartType: 'FilePath'
     chartPath: 'spring-framework-petclinic-helm'
@@ -74,7 +74,7 @@ steps:
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceConnection: 'KubeMigrate-bk-test'
-    namespace: 'bk-test'
+    namespace: 'petclinic'
     command: 'ls'
 
      
