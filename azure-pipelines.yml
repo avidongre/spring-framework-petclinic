@@ -57,7 +57,7 @@ steps:
     command: 'install'
     chartType: 'FilePath'
     chartPath: 'spring-framework-petclinic-helm'
-    releaseName: 'spring-framework-petclinic'
+    releaseName: 'spring-framework-petclinic-app'
     valueFile: 'spring-framework-petclinic-helm/values.yaml'
 - task: HelmDeploy@0
   inputs:
@@ -67,7 +67,7 @@ steps:
     command: 'upgrade'
     chartType: 'FilePath'
     chartPath: 'spring-framework-petclinic-helm'
-    releaseName: 'spring-framework-petclinic'
+    releaseName: 'spring-framework-petclinic-app'
     valueFile: 'spring-framework-petclinic-helm/values.yaml'
 - task: HelmDeploy@0
   displayName: Helm list
