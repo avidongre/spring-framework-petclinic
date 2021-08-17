@@ -62,7 +62,7 @@ steps:
     releaseName: 'spring-framework-petclinic-app'
     valueFile: 'spring-framework-petclinic-helm/values.yaml'
 - task: HelmDeploy@0
-  enabled: true
+  enabled: false
   inputs:
     connectionType: 'Kubernetes Service Connection'
     kubernetesServiceConnection: 'petclinick8connection'
@@ -79,11 +79,18 @@ steps:
     kubernetesServiceConnection: 'petclinick8connection'
     namespace: 'petclinic'
     command: 'ls'
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: 'spring-framework-petclinic-helm'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+    CleanTargetFolder: true
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'helmcharts'
-    publishLocation: 'Container'
+    publishLocation: 'Container'    
 
      
 
