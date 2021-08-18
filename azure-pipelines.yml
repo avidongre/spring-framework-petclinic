@@ -54,7 +54,7 @@ steps:
   enabled: false
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceConnection: 'petclinick8connection'
+    kubernetesServiceConnection: 'petclinicconnection'
     namespace: 'petclinic'
     command: 'install'
     chartType: 'FilePath'
@@ -65,7 +65,7 @@ steps:
   enabled: false
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceConnection: 'petclinick8connection'
+    kubernetesServiceConnection: 'petclinicconnection'
     namespace: 'petclinic'
     command: 'upgrade'
     chartType: 'FilePath'
@@ -76,7 +76,7 @@ steps:
   displayName: Helm list
   inputs:
     connectionType: 'Kubernetes Service Connection'
-    kubernetesServiceConnection: 'petclinick8connection'
+    kubernetesServiceConnection: 'petclinicconnection'
     namespace: 'petclinic'
     command: 'ls'
 - task: CopyFiles@2
