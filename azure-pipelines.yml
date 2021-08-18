@@ -29,7 +29,7 @@ steps:
   inputs:
     containerRegistry: 'infykubedemoregistry'
     repository: $(repository)
-    tags: "1.16.0"
+    tags: $(tag)
     command: 'build'
     Dockerfile: 'Dockerfile'
   
@@ -45,7 +45,7 @@ steps:
   inputs:
     containerRegistry: 'infykubedemoregistry'
     repository: '$(repository)'
-    tags: "1.16.0"
+    tags: $(tag)
     command: 'push'
 
 
