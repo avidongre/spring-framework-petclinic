@@ -13,5 +13,6 @@ RUN cp /tmp/context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
 RUN cp /petclinic.war $CATALINA_HOME/webapps
 #RUN cp /tmp/context.xml $CATALINA_HOME/webapps/petclinic/META-INF/
 
+USER newuser
 #EXPOSE 8080
 CMD ["catalina.sh", "run"]
