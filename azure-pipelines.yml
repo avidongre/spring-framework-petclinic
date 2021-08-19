@@ -38,7 +38,7 @@ steps:
   inputs:
     script: 
       trivy image --exit-code 0 --severity LOW,MEDIUM $(registryName)/$(repository):$(tag)
-      #trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(repository):$(tag)
+      trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(repository):$(tag)
 - task: Docker@2
   enabled: true
   displayName: Docker push
