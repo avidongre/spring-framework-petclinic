@@ -47,6 +47,9 @@ ingress:
   type: LoadBalancer
   annotations: 
     kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: spring-petclinic-user-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required - PetClinic'
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS, HEAD"
     # kubernetes.io/tls-acme: "true"
   hosts:
@@ -90,4 +93,6 @@ affinity: {}
 jdbcusername: jdbcusername
 jdbcpassword: jdbcpassword
 jdbcurl: jdbcurl
-
+appuserauth: appuserauth
+#appusername: appusername
+#apppassword: apppassword
