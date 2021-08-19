@@ -26,9 +26,9 @@ serviceAccount:
 podAnnotations: {}
 
 podSecurityContext: {}
-#    fsGroup: 2000
-    # runAsNonRoot: true
-   #runAsUser: 1001
+#fsGroup: 2000
+# runAsNonRoot: true
+# runAsUser: 1001
 
 securityContext: {}
   # capabilities:
@@ -50,9 +50,9 @@ ingress:
     nginx.ingress.kubernetes.io/cors-allow-methods: "GET, POST, PUT, DELETE, OPTIONS, HEAD"
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: ""
+    - host: "kubemigrate.centralindia.cloudapp.azure.com"
       paths:
-        - path: /
+        - path: /petclinic/?(.*)
           pathType: Prefix
           backend:
             serviceName: spring-petclinic
