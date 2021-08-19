@@ -1,6 +1,6 @@
 FROM tomcat:10-jdk11-openjdk-slim
 
-USER newuser
+#USER newuser
 COPY target/petclinic-jakarta.war /petclinic.war
 COPY docker-resources/context.xml /tmp/context.xml
 COPY docker-resources/tomcat-users.xml $CATALINA_HOME/conf/tomcat-users.xml
