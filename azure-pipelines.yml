@@ -37,7 +37,11 @@ steps:
   displayName: Trivy Scanning
   inputs:
     script: 
+      
       trivy image --exit-code 0 --severity LOW,MEDIUM $(registryName)/$(repository):$(tag)
+      
+      echo 'checking for HIGH , CRITICAL'
+
       trivy image --exit-code 0 --severity HIGH,CRITICAL $(registryName)/$(repository):$(tag)
 - task: Docker@2
   enabled: true
