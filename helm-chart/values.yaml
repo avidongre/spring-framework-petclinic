@@ -94,5 +94,3 @@ jdbcusername: jdbcusername
 jdbcpassword: jdbcpassword
 jdbcurl: jdbcurl
 appuserauth: appuserauth
-#appusername: appusername
-#apppassword: apppassword
