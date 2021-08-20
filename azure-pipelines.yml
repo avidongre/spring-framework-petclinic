@@ -16,13 +16,10 @@ steps:
     mavenPomFile: 'pom.xml'
     goals: 'pre-integration-test'
     options: '-P PostgreSQL'
-    publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'pre-integration-test'
-    options: '-P PostgreSQL'
     mavenVersionOption: 'Default'
     mavenAuthenticateFeed: false
 
