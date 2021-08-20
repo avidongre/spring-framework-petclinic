@@ -23,7 +23,7 @@
     <context:property-placeholder location="classpath:spring/data-access.properties" system-properties-mode="OVERRIDE"/>
 
     <!-- enables scanning for @Transactional annotations -->
-    <tx:annotation-driven/>
+    <tx:annotation-driven transaction-manager="transactionManager"/>
 
 
     <!-- ==================		 3 Profiles to choose from 			===================
@@ -52,7 +52,7 @@
 
         <!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
         <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
-              p:entityManagerFactory-ref="entityManagerFactory"/>
+              p:dataSource-ref="dataSource" p:entityManagerFactory-ref="entityManagerFactory"/>
 
 
         <!--
