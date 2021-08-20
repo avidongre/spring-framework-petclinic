@@ -4,7 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 trigger:
-- master
+- aks-migrate
 
 pool:
   name: MyHostedVM
@@ -14,7 +14,9 @@ steps:
   displayName: Maven Build
   inputs:
     mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
+    goals: 'pre-integration-test'
+    options: '-P PostgreSQL'
+    publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
@@ -64,6 +66,3 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'helmcharts'
     publishLocation: 'Container'    
-
-     
-
